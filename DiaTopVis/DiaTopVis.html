@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js"></script>
+  <script type="text/javascript" src="data1.js"></script>
+  <script type="text/javascript" src="data2.js"></script>
+  <script type="text/javascript" src="otherfunctions.js"></script>
+  <script type="text/javascript" src="buttoncolors.js"></script>
+  <script type="text/javascript" src="part1.js"></script>
+  <script type="text/javascript" src="part2.js"></script>
+  <script type="text/javascript" src="part3.js"></script>
+   
+
+
+    <!-- Bootstrap -->
+    
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.0.4/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css">  
+ 
+
+
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" href="mycss.css">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+  <body onload="setRandomColor()">
+
+
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">DiaTopVis</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Topic Modeling Visualisations <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#part1">Part 1: Generate diachronic topic distribution</a></li>
+            <li><a href="#part2">Part 2: Generate topic words distribution</a></li>
+            <li><a href="#part3">Part 3: Generate distribution of top word(s) in a topic</a></li>
+          </ul>
+        </li>
+        <li><a href="#topictable">Topics</a></li>
+        <li><a href="#help">Help</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<a name="part1"></a>
+  <br>
+  <br>
+  <br>
+
+
+ 
+  <div class="container">
+  <div class="page-header">
+    
+    <h1>Part 1: Generate diachronic topic distribution</h1>      
+  </div>
+
+
+
+
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3> Step 1 : Select topic(s) </h3>
+( mouseover the buttons for more information)
+<br>
+<br>
+<div  id="mytable">
+<div id="topicbutton1" class = 'topicbuttonclass' title="1-strain-growth-medium" href="#"> <input type="checkbox" class="check" id = 't1'>Topic 1</input> </div>​
+<div id="topicbutton2" class = 'topicbuttonclass' title="2-sequence-genome-specie" href="#"> <input type="checkbox" class="check" id = 't2'>Topic 2</input> </div>​
+<div id="topicbutton3" class = 'topicbuttonclass' title="3-genotype-marker-locus" href="#"> <input type="checkbox" class="check" id = 't3'>Topic 3</input> </div>​
+<div id="topicbutton4" class = 'topicbuttonclass' title="4-mutation-mutant-embryo" href="#"> <input type="checkbox" class="check" id = 't4'>Topic 4</input> </div>​
+<div id="topicbutton5" class = 'topicbuttonclass' title="5-parameter-correlation-probability" href="#"> <input type="checkbox" class="check" id = 't5'>Topic 5</input> </div>​
+<div id="myDIV" style="display:none">
+  <h4>More topics</h4>
+<div id="topicbutton6" class = 'topicbuttonclass' title="6-specie-specimen-margin" href="#"> <input type="checkbox" class="check" id = 't6'>Topic 6</input> </div>​
+<div id="topicbutton7" class = 'topicbuttonclass' title="7-specie-water-soil" href="#"> <input type="checkbox" class="check" id = 't7'>Topic 7</input> </div>​
+<div id="topicbutton8" class = 'topicbuttonclass' title="8-frequency-phase-input" href="#"> <input type="checkbox" class="check" id = 't8'>Topic 8</input> </div>​
+<div id="topicbutton9" class = 'topicbuttonclass' title="9-transcript-file-probe" href="#"> <input type="checkbox" class="check" id = 't9'>Topic 9</input> </div>​
+<div id="topicbutton10" class = 'topicbuttonclass' title="10-surface-temperature-particle" href="#"> <input type="checkbox" class="check" id = 't10'>Topic 10</input> </div>​
+<br>
+<div id="topicbutton11" class = 'topicbuttonclass' title="11-antibody-vector-construct" href="#"> <input type="checkbox" class="check" id = 't11'>Topic 11</input> </div>​
+<div id="topicbutton12" class = 'topicbuttonclass' title="12-activation-inhibitor-phosphorylation" href="#"> <input type="checkbox" class="check" id = 't12'>Topic 12</input> </div>​
+<div id="topicbutton13" class = 'topicbuttonclass' title="13-woman-heart-pregnancy" href="#"> <input type="checkbox" class="check" id = 't13'>Topic 13</input> </div>​
+<div id="topicbutton14" class = 'topicbuttonclass' title="14-food-insulin-cholesterol" href="#"> <input type="checkbox" class="check" id = 't14'>Topic 14</input> </div>​
+<div id="topicbutton15" class = 'topicbuttonclass' title="15-bone-fracture-cartilage" href="#"> <input type="checkbox" class="check" id = 't15'>Topic 15</input> </div>​
+<br>
+<div id="topicbutton16" class = 'topicbuttonclass' title="16-mouse-antibody-medium" href="#"> <input type="checkbox" class="check" id = 't16'>Topic 16</input> </div>​
+<div id="topicbutton17" class = 'topicbuttonclass' title="17-migration-adhesion-microtubule" href="#"> <input type="checkbox" class="check" id = 't17'>Topic 17</input> </div>​
+<div id="topicbutton18" class = 'topicbuttonclass' title="18-brain-mouse-neuron" href="#"> <input type="checkbox" class="check" id = 't18'>Topic 18</input> </div>​
+<div id="topicbutton19" class = 'topicbuttonclass' title="19-surgery-injury-complication" href="#"> <input type="checkbox" class="check" id = 't19'>Topic 19</input> </div>​
+<div id="topicbutton20" class = 'topicbuttonclass' title="20-promoter-methylation-transcription" href="#"> <input type="checkbox" class="check" id = 't20'>Topic 20</input> </div>​
+<br>
+<div id="topicbutton21" class = 'topicbuttonclass' title="21-membrane-fluorescence-vesicle" href="#"> <input type="checkbox" class="check" id = 't21'>Topic 21</input> </div>​
+<div id="topicbutton22" class = 'topicbuttonclass' title="22-infection-virus-vaccine" href="#"> <input type="checkbox" class="check" id = 't22'>Topic 22</input> </div>​
+<div id="topicbutton23" class = 'topicbuttonclass' title="23-trial-month-therapy" href="#"> <input type="checkbox" class="check" id = 't23'>Topic 23</input> </div>​
+<div id="topicbutton24" class = 'topicbuttonclass' title="24-network-cluster-module" href="#"> <input type="checkbox" class="check" id = 't24'>Topic 24</input> </div>​
+<div id="topicbutton25" class = 'topicbuttonclass' title="25-domain-molecule-chain" href="#"> <input type="checkbox" class="check" id = 't25'>Topic 25</input> </div>​
+<br>
+
+
+<div id="topicbutton26" class = 'topicbuttonclass' title="26-child-participant-student" href="#"> <input type="checkbox" class="check" id = 't26'>Topic 26</input> </div>​
+<div id="topicbutton27" class = 'topicbuttonclass' title="27-care-intervention-service" href="#"> <input type="checkbox" class="check" id = 't27'>Topic 27</input> </div>​
+<div id="topicbutton28" class = 'topicbuttonclass' title="28-lung-liver-platelet" href="#"> <input type="checkbox" class="check" id = 't28'>Topic 28</input> </div>​
+<div id="topicbutton29" class = 'topicbuttonclass' title="29-score-disorder-item" href="#"> <input type="checkbox" class="check" id = 't29'>Topic 29</input> </div>​
+<div id="topicbutton30" class = 'topicbuttonclass' title="30-adult-host-male" href="#"> <input type="checkbox" class="check" id = 't30'>Topic 30</input> </div>​
+<br>
+<div id="topicbutton31" class = 'topicbuttonclass' title="31-chromosome-cycle-replication" href="#"> <input type="checkbox" class="check" id = 't31'>Topic 31</input> </div>​
+<div id="topicbutton32" class = 'topicbuttonclass' title="32-drug-administration-agent" href="#"> <input type="checkbox" class="check" id = 't32'>Topic 32</input> </div>​
+<div id="topicbutton33" class = 'topicbuttonclass' title="33-lesion-diagnosis-biopsy" href="#"> <input type="checkbox" class="check" id = 't33'>Topic 33</input> </div>​
+<div id="topicbutton34" class = 'topicbuttonclass' title="34-cancer-tumor-breast" href="#"> <input type="checkbox" class="check" id = 't34'>Topic 34</input> </div>​
+<div id="topicbutton35" class = 'topicbuttonclass' title="35-vessel-segment-artery" href="#"> <input type="checkbox" class="check" id = 't35'>Topic 35</input> </div>​
+<br>
+<div id="topicbutton36" class = 'topicbuttonclass' title="36-serum-kidney-plasma" href="#"> <input type="checkbox" class="check" id = 't36'>Topic 36</input> </div>​
+<div id="topicbutton37" class = 'topicbuttonclass' title="37-plant-leaf-seed" href="#"> <input type="checkbox" class="check" id = 't37'>Topic 37</input> </div>​
+<div id="topicbutton38" class = 'topicbuttonclass' title="38-infection-resistance-bacteria" href="#"> <input type="checkbox" class="check" id = 't38'>Topic 38</input> </div>​
+<div id="topicbutton39" class = 'topicbuttonclass' title="39-review-search-quality" href="#"> <input type="checkbox" class="check" id = 't39'>Topic 39</input> </div>​
+<div id="topicbutton40" class = 'topicbuttonclass' title="40-task-trial-participant" href="#"> <input type="checkbox" class="check" id = 't40'>Topic 40</input> </div>​
+<br>
+<div id="topicbutton41" class = 'topicbuttonclass' title="41-image-volume-measurement" href="#"> <input type="checkbox" class="check" id = 't41'>Topic 41</input> </div>​
+<div id="topicbutton42" class = 'topicbuttonclass' title="42-primer-reaction-sequence" href="#"> <input type="checkbox" class="check" id = 't42'>Topic 42</input> </div>​
+<div id="topicbutton43" class = 'topicbuttonclass' title="43-mouse-macrophage-cytokine" href="#"> <input type="checkbox" class="check" id = 't43'>Topic 43</input> </div>​
+<div id="topicbutton44" class = 'topicbuttonclass' title="44-differentiation-stem-culture" href="#"> <input type="checkbox" class="check" id = 't44'>Topic 44</input> </div>​
+<div id="topicbutton45" class = 'topicbuttonclass' title="45-stress-metabolism-acid" href="#"> <input type="checkbox" class="check" id = 't45'>Topic 45</input> </div>​
+<br>
+<div id="topicbutton46" class = 'topicbuttonclass' title="46-receptor-channel-release" href="#"> <input type="checkbox" class="check" id = 't46'>Topic 46</input> </div>​
+<div id="topicbutton47" class = 'topicbuttonclass' title="47-muscle-exercise-movement" href="#"> <input type="checkbox" class="check" id = 't47'>Topic 47</input> </div>​
+<div id="topicbutton48" class = 'topicbuttonclass' title="48-compound-solution-acid" href="#"> <input type="checkbox" class="check" id = 't48'>Topic 48</input> </div>​
+<div id="topicbutton49" class = 'topicbuttonclass' title="49-country-prevalence-cost" href="#"> <input type="checkbox" class="check" id = 't49'>Topic 49</input> </div>​
+<div id="topicbutton50" class = 'topicbuttonclass' title="50-exposure-skin-smokin" href="#"> <input type="checkbox" class="check" id = 't50'>Topic 50</input> </div>​
+
+
+
+
+
+</div>
+
+</div>
+
+<br><br>
+<button onclick="hideshowbutton()">Hide/show more topics</button>
+
+
+
+
+ <h3> Step 2 : Select years</h3>
+
+
+ From : <input type="number"  min="2000" max="2016" value="2005"id = "to">
+  To : <input type="number"  min="2000" max="2016" value="2015"id = "from">
+
+
+ <h3> Step 3 : Generate topic distribution</h3>
+<input type="button" onclick="getyears()" value="Generate Topics"id = "mybutton" class = 'inputbtn'>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+​
+  <script type="text/javascript" src="myjs2.js"></script>
+
+  <div class="container">
+
+  <div id = 'demo'></div>
+ 
+    <div id="chart"></div>
+
+  </div>
+
+ <a name="part2"></a>
+<hr />
+ 
+
+<br>
+  <div class="container">
+  <div class="page-header">
+        
+
+    <h1>Part 2 : Generate topic words distribution</h1>      
+  </div>
+  
+</div>
+
+<div class="container">
+
+
+
+
+
+ <h3> Step 1 : Select topic</h3>
+
+
+
+<select id = 'topiclist'>
+
+  <option  value = '0'> -- select a topic -- </option>
+<!--
+  <option value="Topic 1" id = 'topic2-1'>Topic 1-strain-growth-medium</option>
+  <option value="Topic 2" id = 'topic2-2' >Topic 2-sequence-genome-specie</option>
+
+<option value="Topic 3" id = 'topic2-3' >Topic 3-genotype-marker-locus</option>
+<option value="Topic 4" id = 'topic2-4' >Topic 4-mutation-mutant-embryo</option>
+<option value="Topic 5" id = 'topic2-5' >Topic 5-parameter-correlation-probability</option>
+<option value="Topic 6" id = 'topic2-6' >Topic 6-specie-specimen-margin</option>
+<option value="Topic 7" id = 'topic2-7' >Topic 7-specie-water-soil</option>
+<option value="Topic 8" id = 'topic2-8' >Topic 8-frequency-phase-input</option>
+<option value="Topic 9" id = 'topic2-9' >Topic 9-transcript-file-probe</option>
+<option value="Topic 10" id = 'topic2-10' >Topic 10-surface-temperature-particle</option>
+<option value="Topic 11" id = 'topic2-11' >Topic 11-antibody-vector-construct</option>
+<option value="Topic 12" id = 'topic2-12' >Topic 12-activation-inhibitor-phosphorylation</option>
+!-->
+
+<option value="Topic 13" id = 'topic2-13' >Topic 13-woman-heart-pregnancy</option>
+<option value="Topic 22" id = 'topic2-22' >Topic 22-infection-virus-vaccine</option>
+<option value="Topic 34" id = 'topic2-34' >Topic 34-cancer-tumor-breast</option>
+<option value="Topic 38" id = 'topic2-38' >Topic 38-infection-resistance-bacteria</option>
+
+<!--
+<option value="Topic 14" id = 'topic2-14' >Topic 14-food-insulin-cholesterol</option>
+<option value="Topic 15" id = 'topic2-15' >Topic 15-bone-fracture-cartilage</option>
+<option value="Topic 16" id = 'topic2-16' >Topic 16-mouse-antibody-medium</option>
+<option value="Topic 17" id = 'topic2-17' >Topic 17-migration-adhesion-microtubule</option>
+<option value="Topic 18" id = 'topic2-18' >Topic 18-brain-mouse-neuron</option>
+<option value="Topic 19" id = 'topic2-19' >Topic 19-surgery-injury-complication</option>
+<option value="Topic 20" id = 'topic2-20' >Topic 20-promoter-methylation-transcription</option>
+<option value="Topic 21" id = 'topic2-21' >Topic 21-membrane-fluorescence-vesicle</option>
+<option value="Topic 23" id = 'topic2-23' >Topic 23-trial-month-therapy</option>
+<option value="Topic 24" id = 'topic2-24' >Topic 24-network-cluster-module</option>
+<option value="Topic 25" id = 'topic2-25' >Topic 25-domain-molecule-chain</option>
+<option value="Topic 26" id = 'topic2-26' >Topic 26-child-participant-student</option>
+<option value="Topic 27" id = 'topic2-27' >Topic 27-care-intervention-service</option>
+<option value="Topic 28" id = 'topic2-28' >Topic 28-lung-liver-platelet</option>
+<option value="Topic 29" id = 'topic2-29' >Topic 29-score-disorder-item</option>
+<option value="Topic 30" id = 'topic2-30' >Topic 30-adult-host-male</option>
+<option value="Topic 31" id = 'topic2-31' >Topic 31-chromosome-cycle-replication</option>
+<option value="Topic 32" id = 'topic2-32' >Topic 32-drug-administration-agent</option>
+<option value="Topic 33" id = 'topic2-33' >Topic 33-lesion-diagnosis-biopsy</option>
+<option value="Topic 35" id = 'topic2-35' >Topic 35-vessel-segment-artery</option>
+<option value="Topic 36" id = 'topic2-36' >Topic 36-serum-kidney-plasma</option>
+<option value="Topic 37" id = 'topic2-37' >Topic 37-plant-leaf-seed</option>
+
+<option value="Topic 39" id = 'topic2-39' >Topic 39-review-search-quality</option>
+<option value="Topic 40" id = 'topic2-40' >Topic 40-task-trial-participant</option>
+<option value="Topic 41" id = 'topic2-41' >Topic 41-image-volume-measurement</option>
+<option value="Topic 42" id = 'topic2-42' >Topic 42-primer-reaction-sequence</option>
+<option value="Topic 43" id = 'topic2-43' >Topic 43-mouse-macrophage-cytokine</option>
+<option value="Topic 44" id = 'topic2-44' >Topic 44-differentiation-stem-culture</option>
+<option value="Topic 45" id = 'topic2-45' >Topic 45-stress-metabolism-acid</option>
+<option value="Topic 46" id = 'topic2-46' >Topic 46-receptor-channel-release</option>
+<option value="Topic 47" id = 'topic2-47' >Topic 47-muscle-exercise-movement</option>
+<option value="Topic 48" id = 'topic2-48' >Topic 48-compound-solution-acid</option>
+<option value="Topic 49" id = 'topic2-49' >Topic 49-country-prevalence-cost</option>
+<option value="Topic 50" id = 'topic2-50' >Topic 50-exposure-skin-smokin</option> !-->
+
+ 
+
+
+
+
+ </select>
+ <h3> Step 2 : Select years</h3>
+
+  From : <input type="number"  min="2000" max="2016" value="2005"id = "to2">
+  To : <input type="number"  min="2000" max="2016" value="2015"id = "from2">
+
+ <h3> Step 3 : Generate topic word distribution</h3>
+
+  <input type="button" onclick="gettopicDetails()" value="Topic Details!"id = "mybutton" class = 'inputbtn'>
+
+ <div class="container">
+
+ <div id = 'demo2'></div></div>
+
+    <a name="part3"></a> 
+
+
+<hr size="30">
+
+  <div class="container">
+  <div class="page-header">
+
+        
+    <h1>Part 3:  Generate distribution of top word(s) in a topic </h1>      
+  </div>
+
+</div>
+
+<div class="container">
+
+
+
+
+</div>​
+  <div class="container">
+
+  <div id = 'demo'></div>
+ 
+    <div id="chart"></div>
+  </div>
+
+
+
+
+<h3> Step 1 : Select topic</h3>
+
+
+
+
+
+<select id = 'topiclist3'>
+  <option  value = '0'> -- select a topic -- </option>
+  <option value="T13" id = 'topic3-13'>Topic 13-woman-heart-pregnancy</option>
+  <option value="T22" id = 'topic3-22' >Topic 22-infection-virus-vaccine</option>
+  <option value="T34" id = 'topic3-34' >Topic 34-cancer-tumor-breast</option>
+  <option value="T38" id = 'topic3-38' >Topic 38-infection-resistance-bacteria</select>
+
+ <h3> Step 2 : Select years</h3>
+
+  From : <input type="number"  min="2000" max="2016" value="2005"id = "to3">
+  To : <input type="number"  min="2000" max="2016" value="2015"id = "from3">
+ <h3> Step 3 : Select number of top words</h3>
+
+  From : <input type="number"  min="1" max="10" value="1"id = "topstart">
+  To : <input type="number"  min="1" max="10" value="3"id = "topend">
+
+ <h3> Step 4 : Generate top word(s) distribution</h3>
+
+  <input type="button" onclick="gettopicTTDetails()" value="Topic Details!"id = "mybutton" class = 'inputbtn'>
+
+
+
+ <div id = 'demo3'></div>
+
+
+
+
+
+
+<hr size="30">
+<a name="topictable"></a> 
+
+  <div class="container">
+  <div class="page-header">
+        
+    <h1>Topics</h1>      
+  </div>
+  <p>This is a list of topics created by the topic model.</p>      
+  <p></p>      
+</div>
+
+
+
+
+<div class="tg-wrap">
+  <table  class="table table-bordered">
+  <tr>
+    <th>Topic number</th>
+    <th colspan="10">Topic words</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>strain</td>
+    <td>growth</td>
+    <td>medium</td>
+    <td>culture</td>
+    <td>production</td>
+    <td>bacteria</td>
+    <td>coli</td>
+    <td>yeast</td>
+    <td>mutant</td>
+    <td>plate</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>sequence</td>
+    <td>genome</td>
+    <td>specie</td>
+    <td>family</td>
+    <td>position</td>
+    <td>domain</td>
+    <td>alignment</td>
+    <td>amino</td>
+    <td>tree</td>
+    <td>database</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>genotype</td>
+    <td>marker</td>
+    <td>locus</td>
+    <td>frequency</td>
+    <td>polymorphism</td>
+    <td>variant</td>
+    <td>allele</td>
+    <td>trait</td>
+    <td>variation</td>
+    <td>haplotype</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>mutation</td>
+    <td>mutant</td>
+    <td>embryo</td>
+    <td>phenotype</td>
+    <td>deletion</td>
+    <td>stage</td>
+    <td>loss</td>
+    <td>mouse</td>
+    <td>defect</td>
+    <td>domain</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>parameter</td>
+    <td>correlation</td>
+    <td>probability</td>
+    <td>error</td>
+    <td>prediction</td>
+    <td>estimate</td>
+    <td>feature</td>
+    <td>performance</td>
+    <td>equation</td>
+    <td>simulation</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>specie</td>
+    <td>specimen</td>
+    <td>margin</td>
+    <td>length</td>
+    <td>view</td>
+    <td>dorsal</td>
+    <td>head</td>
+    <td>genus</td>
+    <td>surface</td>
+    <td>seta</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>specie</td>
+    <td>water</td>
+    <td>soil</td>
+    <td>temperature</td>
+    <td>community</td>
+    <td>season</td>
+    <td>abundance</td>
+    <td>habitat</td>
+    <td>climate</td>
+    <td>diversity</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>frequency</td>
+    <td>phase</td>
+    <td>input</td>
+    <td>stimulation</td>
+    <td>stimulus</td>
+    <td>neuron</td>
+    <td>amplitude</td>
+    <td>noise</td>
+    <td>power</td>
+    <td>electrode</td>
+  </tr>
+  <tr>
+    <td>9</td>
+    <td>transcript</td>
+    <td>file</td>
+    <td>probe</td>
+    <td>mirnas</td>
+    <td>microarray</td>
+    <td>array</td>
+    <td>mrna</td>
+    <td>transcription</td>
+    <td>pathway</td>
+    <td>mirna</td>
+  </tr>
+  <tr>
+    <td>10</td>
+    <td>surface</td>
+    <td>temperature</td>
+    <td>particle</td>
+    <td>energy</td>
+    <td>solution</td>
+    <td>layer</td>
+    <td>water</td>
+    <td>film</td>
+    <td>property</td>
+    <td>nanoparticles</td>
+  </tr>
+  <tr>
+    <td>11</td>
+    <td>antibody</td>
+    <td>vector</td>
+    <td>construct</td>
+    <td>sequence</td>
+    <td>plasmid</td>
+    <td>transfection</td>
+    <td>domain</td>
+    <td>buffer</td>
+    <td>blot</td>
+    <td>lane</td>
+  </tr>
+  <tr>
+    <td>12</td>
+    <td>activation</td>
+    <td>inhibitor</td>
+    <td>phosphorylation</td>
+    <td>pathway</td>
+    <td>kinase</td>
+    <td>apoptosis</td>
+    <td>inhibition</td>
+    <td>receptor</td>
+    <td>death</td>
+    <td>growth</td>
+  </tr>
+  <tr>
+    <td>13</td>
+    <td>woman</td>
+    <td>heart</td>
+    <td>pregnancy</td>
+    <td>pressure</td>
+    <td>birth</td>
+    <td>hypertension</td>
+    <td>infant</td>
+    <td>delivery</td>
+    <td>mother</td>
+    <td>week</td>
+  </tr>
+  <tr>
+    <td>14</td>
+    <td>food</td>
+    <td>insulin</td>
+    <td>cholesterol</td>
+    <td>obesity</td>
+    <td>intake</td>
+    <td>consumption</td>
+    <td>diabetes</td>
+    <td>weight</td>
+    <td>alcohol</td>
+    <td>mass</td>
+  </tr>
+  <tr>
+    <td>15</td>
+    <td>bone</td>
+    <td>fracture</td>
+    <td>cartilage</td>
+    <td>spine</td>
+    <td>knee</td>
+    <td>teeth</td>
+    <td>joint</td>
+    <td>surface</td>
+    <td>root</td>
+    <td>pain</td>
+  </tr>
+  <tr>
+    <td>16</td>
+    <td>mouse</td>
+    <td>antibody</td>
+    <td>medium</td>
+    <td>hour</td>
+    <td>culture</td>
+    <td>section</td>
+    <td>animal</td>
+    <td>week</td>
+    <td>serum</td>
+    <td>plate</td>
+  </tr>
+  <tr>
+    <td>17</td>
+    <td>migration</td>
+    <td>adhesion</td>
+    <td>microtubule</td>
+    <td>actin</td>
+    <td>formation</td>
+    <td>image</td>
+    <td>localization</td>
+    <td>junction</td>
+    <td>motility</td>
+    <td>filament</td>
+  </tr>
+  <tr>
+    <td>18</td>
+    <td>brain</td>
+    <td>mouse</td>
+    <td>neuron</td>
+    <td>cortex</td>
+    <td>animal</td>
+    <td>cord</td>
+    <td>motor</td>
+    <td>hippocampus</td>
+    <td>nerve</td>
+    <td>matter</td>
+  </tr>
+  <tr>
+    <td>19</td>
+    <td>surgery</td>
+    <td>injury</td>
+    <td>complication</td>
+    <td>pain</td>
+    <td>technique</td>
+    <td>nerve</td>
+    <td>catheter</td>
+    <td>pressure</td>
+    <td>operation</td>
+    <td>vein</td>
+  </tr>
+  <tr>
+    <td>20</td>
+    <td>promoter</td>
+    <td>methylation</td>
+    <td>transcription</td>
+    <td>histone</td>
+    <td>chromatin</td>
+    <td>chip</td>
+    <td>element</td>
+    <td>regulation</td>
+    <td>modification</td>
+    <td>motif</td>
+  </tr>
+  <tr>
+    <td>21</td>
+    <td>membrane</td>
+    <td>fluorescence</td>
+    <td>vesicle</td>
+    <td>fusion</td>
+    <td>microscopy</td>
+    <td>mitochondrion</td>
+    <td>transport</td>
+    <td>image</td>
+    <td>localization</td>
+    <td>surface</td>
+  </tr>
+  <tr>
+    <td>22</td>
+    <td>infection</td>
+    <td>virus</td>
+    <td>vaccine</td>
+    <td>antibody</td>
+    <td>vaccination</td>
+    <td>antigen</td>
+    <td>replication</td>
+    <td>titer</td>
+    <td>influenza</td>
+    <td>transmission</td>
+  </tr>
+  <tr>
+    <td>23</td>
+    <td>trial</td>
+    <td>month</td>
+    <td>therapy</td>
+    <td>week</td>
+    <td>baseline</td>
+    <td>event</td>
+    <td>outcome</td>
+    <td>intervention</td>
+    <td>medication</td>
+    <td>cohort</td>
+  </tr>
+  <tr>
+    <td>24</td>
+    <td>network</td>
+    <td>cluster</td>
+    <td>module</td>
+    <td>node</td>
+    <td>database</td>
+    <td>edge</td>
+    <td>user</td>
+    <td>tool</td>
+    <td>feature</td>
+    <td>file</td>
+  </tr>
+  <tr>
+    <td>25</td>
+    <td>domain</td>
+    <td>molecule</td>
+    <td>chain</td>
+    <td>bond</td>
+    <td>ligand</td>
+    <td>conformation</td>
+    <td>energy</td>
+    <td>crystal</td>
+    <td>position</td>
+    <td>atom</td>
+  </tr>
+  <tr>
+    <td>26</td>
+    <td>child</td>
+    <td>participant</td>
+    <td>student</td>
+    <td>school</td>
+    <td>family</td>
+    <td>parent</td>
+    <td>people</td>
+    <td>question</td>
+    <td>experience</td>
+    <td>behavior</td>
+  </tr>
+  <tr>
+    <td>27</td>
+    <td>care</td>
+    <td>intervention</td>
+    <td>service</td>
+    <td>practice</td>
+    <td>program</td>
+    <td>management</td>
+    <td>community</td>
+    <td>provider</td>
+    <td>staff</td>
+    <td>hospital</td>
+  </tr>
+  <tr>
+    <td>28</td>
+    <td>lung</td>
+    <td>liver</td>
+    <td>platelet</td>
+    <td>respiratory</td>
+    <td>mortality</td>
+    <td>fibrosis</td>
+    <td>admission</td>
+    <td>sepsis</td>
+    <td>count</td>
+    <td>fluid</td>
+  </tr>
+  <tr>
+    <td>29</td>
+    <td>score</td>
+    <td>disorder</td>
+    <td>item</td>
+    <td>scale</td>
+    <td>symptom</td>
+    <td>depression</td>
+    <td>pain</td>
+    <td>questionnaire</td>
+    <td>anxiety</td>
+    <td>correlation</td>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>adult</td>
+    <td>host</td>
+    <td>male</td>
+    <td>female</td>
+    <td>larva</td>
+    <td>stage</td>
+    <td>mosquito</td>
+    <td>fitness</td>
+    <td>generation</td>
+    <td>selection</td>
+  </tr>
+  <tr>
+    <td>31</td>
+    <td>chromosome</td>
+    <td>cycle</td>
+    <td>replication</td>
+    <td>damage</td>
+    <td>repair</td>
+    <td>phase</td>
+    <td>focus</td>
+    <td>testis</td>
+    <td>irradiation</td>
+    <td>follicle</td>
+  </tr>
+  <tr>
+    <td>32</td>
+    <td>drug</td>
+    <td>administration</td>
+    <td>agent</td>
+    <td>injection</td>
+    <td>mg/kg</td>
+    <td>combination</td>
+    <td>toxicity</td>
+    <td>dose</td>
+    <td>efficacy</td>
+    <td>therapy</td>
+  </tr>
+  <tr>
+    <td>33</td>
+    <td>lesion</td>
+    <td>diagnosis</td>
+    <td>biopsy</td>
+    <td>examination</td>
+    <td>tumor</td>
+    <td>resection</td>
+    <td>recurrence</td>
+    <td>month</td>
+    <td>mass</td>
+    <td>feature</td>
+  </tr>
+  <tr>
+    <td>34</td>
+    <td>cancer</td>
+    <td>tumor</td>
+    <td>breast</td>
+    <td>survival</td>
+    <td>metastasis</td>
+    <td>growth</td>
+    <td>carcinoma</td>
+    <td>lung</td>
+    <td>tumour</td>
+    <td>chemotherapy</td>
+  </tr>
+  <tr>
+    <td>35</td>
+    <td>vessel</td>
+    <td>segment</td>
+    <td>artery</td>
+    <td>wall</td>
+    <td>plaque</td>
+    <td>toxin</td>
+    <td>aggregation</td>
+    <td>formation</td>
+    <td>flow</td>
+    <td>lesion</td>
+  </tr>
+  <tr>
+    <td>36</td>
+    <td>serum</td>
+    <td>kidney</td>
+    <td>plasma</td>
+    <td>vitamin</td>
+    <td>donor</td>
+    <td>biomarkers</td>
+    <td>correlation</td>
+    <td>creatinine</td>
+    <td>marker</td>
+    <td>laboratory</td>
+  </tr>
+  <tr>
+    <td>37</td>
+    <td>plant</td>
+    <td>leaf</td>
+    <td>seed</td>
+    <td>root</td>
+    <td>rice</td>
+    <td>arabidopsis</td>
+    <td>growth</td>
+    <td>fruit</td>
+    <td>wheat</td>
+    <td>stage</td>
+  </tr>
+  <tr>
+    <td>38</td>
+    <td>infection</td>
+    <td>resistance</td>
+    <td>bacteria</td>
+    <td>isolates</td>
+    <td>strain</td>
+    <td>culture</td>
+    <td>pathogen</td>
+    <td>phage</td>
+    <td>tuberculosis</td>
+    <td>coli</td>
+  </tr>
+  <tr>
+    <td>39</td>
+    <td>review</td>
+    <td>search</td>
+    <td>quality</td>
+    <td>paper</td>
+    <td>publication</td>
+    <td>criterion</td>
+    <td>strategy</td>
+    <td>literature</td>
+    <td>science</td>
+    <td>heterogeneity</td>
+  </tr>
+  <tr>
+    <td>40</td>
+    <td>task</td>
+    <td>trial</td>
+    <td>participant</td>
+    <td>memory</td>
+    <td>stimulus</td>
+    <td>performance</td>
+    <td>word</td>
+    <td>session</td>
+    <td>face</td>
+    <td>block</td>
+  </tr>
+  <tr>
+    <td>41</td>
+    <td>image</td>
+    <td>volume</td>
+    <td>measurement</td>
+    <td>sensor</td>
+    <td>intensity</td>
+    <td>position</td>
+    <td>field</td>
+    <td>detection</td>
+    <td>device</td>
+    <td>resolution</td>
+  </tr>
+  <tr>
+    <td>42</td>
+    <td>primer</td>
+    <td>reaction</td>
+    <td>sequence</td>
+    <td>product</td>
+    <td>amplification</td>
+    <td>cycle</td>
+    <td>clone</td>
+    <td>polymerase</td>
+    <td>extraction</td>
+    <td>detection</td>
+  </tr>
+  <tr>
+    <td>43</td>
+    <td>mouse</td>
+    <td>macrophage</td>
+    <td>cytokine</td>
+    <td>production</td>
+    <td>antibody</td>
+    <td>inflammation</td>
+    <td>activation</td>
+    <td>receptor</td>
+    <td>immune</td>
+    <td>antigen</td>
+  </tr>
+  <tr>
+    <td>44</td>
+    <td>differentiation</td>
+    <td>stem</td>
+    <td>culture</td>
+    <td>collagen</td>
+    <td>proliferation</td>
+    <td>marker</td>
+    <td>growth</td>
+    <td>progenitor</td>
+    <td>medium</td>
+    <td>fibroblast</td>
+  </tr>
+  <tr>
+    <td>45</td>
+    <td>stress</td>
+    <td>metabolism</td>
+    <td>acid</td>
+    <td>enzyme</td>
+    <td>iron</td>
+    <td>production</td>
+    <td>synthesis</td>
+    <td>pathway</td>
+    <td>oxygen</td>
+    <td>reaction</td>
+  </tr>
+  <tr>
+    <td>46</td>
+    <td>receptor</td>
+    <td>channel</td>
+    <td>release</td>
+    <td>calcium</td>
+    <td>activation</td>
+    <td>neuron</td>
+    <td>stimulation</td>
+    <td>solution</td>
+    <td>action</td>
+    <td>voltage</td>
+  </tr>
+  <tr>
+    <td>47</td>
+    <td>muscle</td>
+    <td>exercise</td>
+    <td>movement</td>
+    <td>force</td>
+    <td>motor</td>
+    <td>hand</td>
+    <td>training</td>
+    <td>strength</td>
+    <td>limb</td>
+    <td>fiber</td>
+  </tr>
+  <tr>
+    <td>48</td>
+    <td>compound</td>
+    <td>solution</td>
+    <td>acid</td>
+    <td>reaction</td>
+    <td>water</td>
+    <td>mass</td>
+    <td>mixture</td>
+    <td>extract</td>
+    <td>spectrum</td>
+    <td>fraction</td>
+  </tr>
+  <tr>
+    <td>49</td>
+    <td>country</td>
+    <td>prevalence</td>
+    <td>cost</td>
+    <td>survey</td>
+    <td>mortality</td>
+    <td>status</td>
+    <td>death</td>
+    <td>hospital</td>
+    <td>proportion</td>
+    <td>household</td>
+  </tr>
+  <tr>
+    <td>50</td>
+    <td>exposure</td>
+    <td>skin</td>
+    <td>smoking</td>
+    <td>smoker</td>
+    <td>tobacco</td>
+    <td>cigarette</td>
+    <td>worker</td>
+    <td>hair</td>
+    <td>product</td>
+    <td>meta</td>
+  </tr>
+</table></div>
+
+
+<hr size="30">
+
+
+<hr size="30">
+<hr size="30">
+<hr size="30">
+
+
+<a name="help"></a> 
+
+
+<div class="container">
+  <div class="page-header">
+    <h1>How to use this website</h1>      
+  </div>
+
+
+
+
+
+
+
+
+    
+</div>
+<hr size="30">
+<a name="about"></a> 
+
+
+<div class="container">
+  <div class="page-header">
+    <h1>About this project</h1>      
+  </div>
+
+
+
+
+
+     
+</div>
+<hr size="30">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+
+
+
+
+
+
+
+
+
+
+</html>
