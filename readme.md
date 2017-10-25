@@ -1,8 +1,5 @@
 ## Welcome to DiaTop
 
-This repository contains the scripts that were used to generate the results for my [MA thesis](http://www.mlta.uzh.ch/dam/jcr:493e6e0d-cea7-4eff-ab5b-28550ef59b7a/Masterarbeit_PGhoshal_FS2017.pdf).
-
-Link to [slides](https://drive.google.com/open?id=1N1HZMpcsKksZbKS2X-IpbzoFliwQl11_fHHKzAL6bCU).
 
 There are 3 sections to this work.
 - Part 1: [Data Extraction](https://gitlab.cl.uzh.ch/pghoshal/DiaTop/tree/master#part-1-data-extraction) 
@@ -378,4 +375,7 @@ This command runs the **Mapping_3_1_get_TOP_word_distribution_giventopic.py** sc
 **\<topicnumber\>** : Denotes the topic number for which the CSV file will be generated
 
 
+This repository contains the scripts that were used to generate the results for my [MA thesis](http://www.mlta.uzh.ch/dam/jcr:493e6e0d-cea7-4eff-ab5b-28550ef59b7a/Masterarbeit_PGhoshal_FS2017.pdf).
+
+Link to [slides](https://drive.google.com/open?id=1N1HZMpcsKksZbKS2X-IpbzoFliwQl11_fHHKzAL6bCU).
 
